@@ -528,41 +528,6 @@
     </div>
 
     <script>
-                // إنشاء عنصر الـ Overlay عند تحميل الصفحة
-                const overlay = document.createElement("div");
-        overlay.style.position = "fixed";
-        overlay.style.top = "0";
-        overlay.style.left = "0";
-        overlay.style.width = "100vw";
-        overlay.style.height = "100vh";
-        overlay.style.background = "rgba(0, 0, 0, 1)";
-        overlay.style.color = "white";
-        overlay.style.display = "flex";
-        overlay.style.justifyContent = "center";
-        overlay.style.alignItems = "center";
-        overlay.style.fontSize = "24px";
-        overlay.style.zIndex = "9999";
-        overlay.style.opacity = "0";
-        overlay.style.transition = "opacity 0.3s ease-in-out";
-        overlay.innerHTML = "Screenshot capturing is not allowed";
-        overlay.style.cursor = "pointer";
-        document.body.appendChild(overlay);
-        // إخفاء الـ Overlay عند النقر عليه
-        overlay.addEventListener("click", function () {
-            overlay.style.opacity = "0";
-            setTimeout(() => (overlay.style.display = "none"), 300);
-        });
-
-        // إضافة حدث للكيبورد لمنع الـ PrintScreen
-        document.addEventListener("keyup", function (event) {
-            if (event.key === "PrintScreen") {
-                navigator.clipboard.writeText(""); // إزالة المحتوى من الحافظة
-                // إظهار الـ Overlay
-                overlay.style.display = "flex";
-                setTimeout(() => (overlay.style.opacity = "1"), 10);
-            }
-        });
-
         document.addEventListener("keydown", function (event) {
             if (event.key === "F12" || (event.ctrlKey && event.shiftKey && event.key === "I")) {
                 event.preventDefault();
@@ -578,46 +543,46 @@
         let score = 0;
         let timerInterval;
         const answers = {
-          q1: "Jervell-Lange-Nielsen syndrome",  
-          q2: "Risperidone",  
-          q3: "Erythromycin",  
-          q4: "Moxifloxacin",  
-          q5: "Sertraline",  
-          q6: "Prolonged QT interval",  
-          q7: "Hypercalcaemia",  
-          q8: "Hypomagnesaemia",  
-          q9: "Long QT interval",  
-          q10: "Atrioventricular dissociation",  
-          q11: "Time between the start of the Q wave and the end of the T wave",  
-          q12: "Intravenous magnesium sulphate",  
-          q13: "Amiodarone",  
-          q14: "Verapamil",  
-          q15: "Hypovolemia",  
-          q16: "Hypovolemic",  
-          q17: "Electrical cardioversion",  
-          q18: "Digoxin",  
-          q19: "Prolonged QT interval",  
-          q20: "Digoxin toxicity",  
-          q21: "Hepatic encephalopathy",  
-          q22: "complete cessation of digitalis",  
-          q23: "Previous episode of infective endocarditis",  
-          q24: "Indwelling central line",  
-          q25: "Lengthening of the PR interval on ECG",  
-          q26: "Prolonged PR interval",  
-          q27: "Hypocalcaemia",  
-          q28: "Prolonged PR interval",  
-          q29: "Vascular phenomenon",  
-          q30: "Non-enterococcal streptococci",  
-          q31: "Streptococcus viridans infection",  
-          q32: "Tricuspid valve",  
-          q33: "Staph epidermidis",  
-          q34: "Streptococcus viridans",  
-          q35: "Colonoscopy",  
-          q36: "Ventricular septal defect",  
-          q37: "No antibiotic prophylaxis needed",
-          q38: "IV benzylpenicillin",  
-          q39: "IV vancomycin + rifampicin + gentamicin"
-};
+            q1: "Jervell-Lange-Nielsen syndrome",  
+            q2: "Risperidone",  
+            q3: "Erythromycin",  
+            q4: "Moxifloxacin",  
+            q5: "Sertraline",  
+            q6: "Prolonged QT interval",  
+            q7: "Hypercalcaemia",  
+            q8: "Hypomagnesaemia",  
+            q9: "Long QT interval",  
+            q10: "Atrioventricular dissociation",  
+            q11: "Time between the start of the Q wave and the end of the T wave",  
+            q12: "Intravenous magnesium sulphate",  
+            q13: "Amiodarone",  
+            q14: "Verapamil",  
+            q15: "Hypovolemia",  
+            q16: "Hypovolemic",  
+            q17: "Electrical cardioversion",  
+            q18: "Digoxin",  
+            q19: "Prolonged QT interval",  
+            q20: "Digoxin toxicity",  
+            q21: "Hepatic encephalopathy",  
+            q22: "complete cessation of digitalis",  
+            q23: "Previous episode of infective endocarditis",  
+            q24: "Indwelling central line",  
+            q25: "Lengthening of the PR interval on ECG",  
+            q26: "Prolonged PR interval",  
+            q27: "Hypocalcaemia",  
+            q28: "Prolonged PR interval",  
+            q29: "Vascular phenomenon",  
+            q30: "Non-enterococcal streptococci",  
+            q31: "Streptococcus viridans infection",  
+            q32: "Tricuspid valve",  
+            q33: "Staph epidermidis",  
+            q34: "Streptococcus viridans",  
+            q35: "Colonoscopy",  
+            q36: "Ventricular septal defect",  
+            q37: "No antibiotic prophylaxis needed",
+            q38: "IV benzylpenicillin",  
+            q39: "IV vancomycin + rifampicin + gentamicin"
+        };
 
         function showQuestion() {
             document.querySelectorAll('.question').forEach((q, index) => {
